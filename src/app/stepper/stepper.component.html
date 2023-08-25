@@ -27,6 +27,28 @@
     </div>
   </mat-step>
 
+  <mat-step [stepControl]="secondFormGroup" label="Select players for Team1">
+    <form [formGroup]="secondFormGroup">
+      <div *ngIf="selectedValue">
+        <section class="example-section">
+          <span class="example-list-section">
+            <ul>
+              <li *ngFor="let player of team1.players">
+                <mat-checkbox>
+                  {{ player.name }}
+                </mat-checkbox>
+              </li>
+            </ul>
+          </span>
+        </section>
+        {{ team1.name }}
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
